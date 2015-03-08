@@ -15,62 +15,90 @@ DEBUGGER = false;
     var king = new ListenKing(),
         btn = document.getElementsByClassName('myButtonOne')[0];
 
-    king.listen("click", btn, alertHi, document, "randomTest");
+    king.listen("click", btn, alertHi, btn, ["randomTest"]);
   }
 }());
 
 function alertHi(){
-  debugger;
-  alert('hi' + this);
+  if (DEBUGGER)
+    debugger;
+
+  console.log('hi' + this + " arguments are: " + arguments);
 }
 
-function ListenKing() { // Next Princes
+function ListenKing() { // Next Princes, DOM, stopListening
   this.listeners = [];
-  this.listeningTo = {};
-}
+  this.ListenPrinces = {};
 
-ListenKing.prototype.listen = function(forWhat, onWhat, cb, byWho, extra){
-  var self = this,
-      context = byWho || document,
-      who_cb_extra = [forWhat, onWhat, cb, byWho];
+  var King = this;
 
-  if (!this.listeningTo[forWhat])
-    document.addEventListener(forWhat, function(evt){
-      self.distribute(evt);
-    })
 
-  if (extra) {
+  function ListenPrince(forWhat){
+    this.forWhat = forWhat;
+    this.listenSubjects = [];
+
+    document.addEventListener(this.forWhat, function(evt){
+      King.distribute(evt);
+    });
+
+    this.ListenSubject = ListenSubject;
+  }
+
+  ListenPrince.prototype.addListenSubject = function(onWhat, cb, byWho, extra){
+    this.listenSubjects.push(new this.ListenSubject(onWhat, cb, byWho, extra));
+  }
+
+  ListenPrince.prototype.order = function(evt) {
+    for (var i = 0; i < this.listenSubjects.length; i++){
+      var subject = this.listenSubjects[i];
+
+      if (subject.onWhat === evt.target) {
+        var args = subject.extra.slice(0);
+
+        args.push(evt);
+        subject.cb.apply(subject.byWho, args);
+      }
+    }
+  }
+
+  function ListenSubject(onWhat, cb, byWho, extra){
+    extra = extra || [];
     if (!(extra.constructor === Array))
       extra = [extra];
 
-    who_cb_extra.push(extra);
+
+    this.onWhat = onWhat;
+    this.cb = cb;
+    this.byWho = byWho || document;
+    this.extra = extra;
   }
 
-  this.listeners.push(who_cb_extra);
+  this.ListenPrince = ListenPrince;
+}
+
+ListenKing.prototype.comePrince = function(forWhat) {
+  return this.ListenPrinces[forWhat];
+}
+
+ListenKing.prototype.createListenPrince = function(forWhat){
+  return this.ListenPrinces[forWhat] = new this.ListenPrince(forWhat);
+}
+
+ListenKing.prototype.listen = function(forWhat, onWhat, cb, byWho, extra){
+  var relevantPrince = this.comePrince(forWhat) ||
+      this.createListenPrince(forWhat);
+
+  relevantPrince.addListenSubject(onWhat, cb, byWho, extra);
 }
 
 ListenKing.prototype.distribute = function(evt){
   if (DEBUG)
     console.log('distributing ' + evt);
 
-  for (var i = 0; i < this.listeners.length; i++){
-    var oneListen = this.listeners[i],
-        forWhat = oneListen[0],
-        onWhat = oneListen[1];
+  var domain = evt.type,
+      prince = this.comePrince(domain);
 
-    if (forWhat === evt.type && onWhat === evt.target){
-
-      if (DEBUGGER)
-        debugger;
-
-      var cb = oneListen[2],
-          byWho = oneListen[3],
-          extra = (oneListen[4] && oneListen[4].slice(0)) || [];
-
-      extra.push(evt);
-
-      cb.apply(byWho, extra);
-    }
-  }
+  if (prince)
+    prince.order(evt);
 }
 
