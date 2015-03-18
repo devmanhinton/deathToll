@@ -1,0 +1,46 @@
+#clickableHouses button {
+  margin-right: 3px;
+
+
+  border-bottom-left-radius: 200px;
+  border-bottom-width: 1px;
+  border-bottom-right-radius: 200px;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  border-top-color: black;
+  border-top-style: solid;
+  border-top-width: .8px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+
+  padding-bottom: 10px;
+
+  width: 80px;
+}
+
+#clickableHouses {
+  width: 800px;
+}
+
+.tableTitles {
+  width: 150px;
+  float: left;
+}
+
+.gravestones {
+  float: left;
+  margin-top: 35px;
+}
+
+.first {
+  margin-left: 150px;
+}
+
+
+#deathToll {
+  margin-left: 60px;
+  margin-top: 30px;
+}

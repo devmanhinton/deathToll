@@ -1,6 +1,11 @@
 DEBUG = true;
 DEBUGGER = false;
 
+HOUSES = ['Lannister', 'Snow', 'Stark', 'Tyrell'];
+HOUSE_BANNER_CLASSES = "houseBanner myButtonOne";
+
+// Off listeners
+// Learn CSS Bro!!
 
 (function(){
   window.addEventListener("DOMContentLoaded", function(){
@@ -8,6 +13,7 @@ DEBUGGER = false;
   });
 
   var setup = function(){
+    addHouseBanners(HOUSES);
     setupListeners();
   }
 
@@ -18,10 +24,34 @@ DEBUGGER = false;
   }
 }());
 
+// Add Code such that automated adding of houses and death tolls
+
+
+
+function addHouseBanners(houses){
+  var housesElem = document.getElementById("clickableHouses");
+
+  for (var i = 0; i < houses.length; i++){
+    addHouse(housesElem, houses[i], i);
+  }
+}
+
+function addHouse(housesElem, house, ith){
+  var button = document.createElement("button"),
+      className = HOUSE_BANNER_CLASSES;
+
+  if (ith === 0)
+    className += " first";
+
+  button.className = className;
+  button.textContent = "House " + house;
+
+  housesElem.appendChild(button);
+}
+
 function alertHi(){
   if (DEBUGGER)
     debugger;
-
   console.log('hi' + this + " arguments are: " + arguments);
 }
 

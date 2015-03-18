@@ -1,0 +1,22 @@
+  .textContainer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    /* Remove default shit */
+    border: none;
+    background: none;
+  }
+
+  #pageHeader {
+    text-align: center;
+  }
+
+  #wrapper {
+    width: 1000px;
+  }
+
+  #page {
+    width: 800px;
+  }
