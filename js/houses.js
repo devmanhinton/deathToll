@@ -1,3 +1,4 @@
+HOUSE_BANNER_CLASSES = "houseBanner myButtonOne";
 
 function Houses (houseNames, elem, skipAdd) {
   this.houseNames = houseNames;
@@ -35,6 +36,7 @@ Houses.prototype.addHouse = function(house, ith){
 //   this.graveyards || this.graveyards = [];
 
 //   for (var i = 0; i < this.houseNames.length; i++){
+//     var container = document.createElement('div');
 
 //   }
 // }

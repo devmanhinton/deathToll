@@ -2,11 +2,9 @@ DEBUG = true;
 DEBUGGER = false;
 
 HOUSE_NAMES = ['Lannister', 'Snow', 'Stark', 'Tyrell'];
-HOUSE_BANNER_CLASSES = "houseBanner myButtonOne";
 
 // Off listeners
 // Learn CSS Bro!!
-
 (function(){
   window.addEventListener("DOMContentLoaded", function(){
     setup();
@@ -23,7 +21,6 @@ HOUSE_BANNER_CLASSES = "houseBanner myButtonOne";
     pageKing.listen("click", btn, alertHi, btn, ["randomTest"]);
   }
 }());
-
 
 function alertHi(){
   if (DEBUGGER)
