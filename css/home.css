@@ -21,6 +21,8 @@
   width: 80px;
 }
 
+/*  // box-sizing: content-box; very interesting property to lookup */
+
 #clickableHouses {
   width: 800px;
 }
@@ -40,6 +42,7 @@
   padding: 10px;
   width: 60px;
   height: 200px;
+  border: 1px solid black;
 
 }
 
