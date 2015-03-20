@@ -11,8 +11,12 @@ HOUSE_NAMES = ['Lannister', 'Snow', 'Stark', 'Tyrell'];
   });
 
   var setup = function(){
-    var houseContainer = document.getElementById("clickableHouses");
+    var houseContainer = document.getElementById('clickableHouses'),
+        graveyardContainer = document.getElementById('graveyardContainer');
+
     window.houses = new Houses(HOUSE_NAMES, houseContainer);
+    window.houses.addHouseGraveyards(graveyardContainer);
+
     setupListeners();
   }
 

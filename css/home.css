@@ -30,9 +30,17 @@
   float: left;
 }
 
-.gravestones {
+#graveyardContainer {
   float: left;
   margin-top: 35px;
+  width: 400px;
+}
+
+.graveyard {
+  padding: 10px;
+  width: 60px;
+  height: 200px;
+
 }
 
 .first {

@@ -1,4 +1,6 @@
 HOUSE_BANNER_CLASSES = "houseBanner myButtonOne";
+GRAVEYARD_CLASSES = "graveyard";
+GRAVEYARD_ID = "houseName-graveyard";
 
 function Houses (houseNames, elem, skipAdd) {
   this.houseNames = houseNames;
@@ -27,16 +29,26 @@ Houses.prototype.addHouse = function(house, ith){
   this.elem.appendChild(button);
 }
 
-// House.prototype.addHouseGraveyards = function(elem){
-//   if (!elem && !this.graveyardElem) {
-//     console.log('WARNING - addHouseGraveyards called but no elem known');
-//     return;
-//   }
+Houses.prototype.addHouseGraveyards = function(elem){
+  if (!elem && !this.graveyardElem) {
+    console.log('WARNING - addHouseGraveyards called but no elem known');
+    return;
+  }
 
-//   this.graveyards || this.graveyards = [];
+  this.graveyards || (this.graveyards = []);
 
-//   for (var i = 0; i < this.houseNames.length; i++){
-//     var container = document.createElement('div');
+  for (var i = 0; i < this.houseNames.length; i++){
+    var container = document.createElement('div'),
+        houseName = this.houseNames[i];
 
-//   }
-// }
+    container.className = GRAVEYARD_CLASSES,
+    container.id = GRAVEYARD_ID.replace('houseName', houseName);
+    container.textContent = houseName + " graveyard";
+
+    container.style.cssFloat = 'left';
+
+    this.graveyards.push(container);
+    elem.appendChild(container);
+
+  }
+}
