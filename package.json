@@ -1,0 +1,15 @@
+{
+  "name": "devmanhinton",
+  "version": "0.0.0",
+  "description": "GOT Death list",
+  "main": "home.html",
+  "scripts": {
+    "test": "testall"
+  },
+  "keywords": [
+    "GOT",
+    "practice"
+  ],
+  "author": "Devon Hinton Jr.",
+  "license": "BSD-2-Clause"
+}
