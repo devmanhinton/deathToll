@@ -79,3 +79,8 @@ var pageKing = (function(){
 
   return King;
 }());
+
+// Compatiblity for Node.js style require
+if (typeof exports != 'undefined') {
+  module.exports = pageKing;
+}
