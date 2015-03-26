@@ -11,5 +11,14 @@
     "practice"
   ],
   "author": "Devon Hinton Jr.",
-  "license": "BSD-2-Clause"
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "karma": "~0.12.31",
+    "mocha": "~2.2.1",
+    "karma-mocha": "~0.1.10",
+    "karma-chrome-launcher": "~0.1.7",
+    "karma-firefox-launcher": "~0.1.4",
+    "karma-safari-launcher": "~0.1.1",
+    "chai": "~2.1.2"
+  }
 }
