@@ -19,6 +19,7 @@
     "karma-chrome-launcher": "~0.1.7",
     "karma-firefox-launcher": "~0.1.4",
     "karma-safari-launcher": "~0.1.1",
-    "chai": "~2.1.2"
+    "chai": "~2.1.2",
+    "sinon": "~1.14.1",
   }
 }

@@ -17,8 +17,8 @@ module.exports = function(config) {
     files: [
       'js/*',
       'test/**',
-      'test/fixtures/test_home.html',
       'node_modules/chai/chai.js',
+      'node_modules/sinon/pkg/sinon.js'
     ],
 
 
